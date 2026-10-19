@@ -1,5 +1,5 @@
-
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 
 
 def home(request):
@@ -55,3 +55,25 @@ def home(request):
     }
 
     return render(request, "core/home.html", contexte)
+
+#login
+def login_view(request):
+    error = ""
+
+    if request.method == "POST":
+        username = request.POST.get("username", "").strip()
+        password = request.POST.get("password", "")
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+        else:
+            error = "Nom d'utilisateur ou mot de passe incorrect."
+
+    return render(request, "core/login.html", {"error": error})
