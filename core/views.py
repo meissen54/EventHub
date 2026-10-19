@@ -150,3 +150,15 @@ def signup_view(request):
     }
 
     return render(request, "core/signup.html", contexte)
+
+# =========================
+# PAGE ÉVÉNEMENTS
+# =========================
+def events(request):
+    return render(request, "core/events.html")
+
+# =========================
+# PAGE DÉTAIL D'UN ÉVÉNEMENT
+# =========================
+def event_detail(request):
+    return render(request, "core/event_detail.html")

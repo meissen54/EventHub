@@ -52,44 +52,46 @@
     </div>
 
     <!-- NAVIGATION -->
-    <header class="navbar">
-        <a href="{% url 'home' %}" class="logo" aria-label="EventHub, accueil">
-            <span class="logo-symbol">e</span>
-            <span>Event<span class="logo-accent">Hub</span></span>
-        </a>
+    
+<!-- NAVIGATION -->
+<header class="navbar">
+    <a href="{% url 'home' %}" class="logo" aria-label="EventHub, accueil">
+        <span class="logo-symbol">e</span>
+        <span>Event<span class="logo-accent">Hub</span></span>
+    </a>
 
-        <form class="search-bar" action="{% url 'home' %}" method="get">
-            <label class="search-field">
-                <span class="sr-only">Que recherchez-vous ?</span>
-                <span class="search-icon">⌕</span>
-                <input type="search" name="q"
-                       placeholder="Événements, activités, centres d'intérêt..."
-                       value="{{ recherche }}">
-            </label>
+    <form class="search-bar" action="{% url 'home' %}" method="get">
+        <label class="search-field">
+            <span class="sr-only">Que recherchez-vous ?</span>
+            <span class="search-icon">⌕</span>
+            <input type="search" name="q"
+                   placeholder="Événements, activités, centres d'intérêt..."
+                   value="{{ recherche }}">
+        </label>
 
-            <span class="search-divider"></span>
+        <span class="search-divider"></span>
 
-            <label class="search-field location-field">
-                <span class="search-icon">⌖</span>
-                <span class="sr-only">Ville</span>
-                <input type="text" name="lieu"
-                       placeholder="Ville, ex. Tunis"
-                       value="{{ lieu_recherche }}">
-            </label>
+        <label class="search-field location-field">
+            <span class="search-icon">⌖</span>
+            <span class="sr-only">Ville</span>
+            <input type="text" name="lieu"
+                   placeholder="Ville, ex. Tunis"
+                   value="{{ lieu_recherche }}">
+        </label>
 
-            <button class="search-button" type="submit" aria-label="Rechercher">
-                <span>⌕</span>
-                <span class="search-button-text">Rechercher</span>
-            </button>
-        </form>
+        <button class="search-button" type="submit" aria-label="Rechercher">
+            <span>⌕</span>
+            <span class="search-button-text">Rechercher</span>
+        </button>
+    </form>
 
-        <nav class="nav-links" aria-label="Navigation principale">
-            <a href="#evenements">Explorer</a>
-            <a href="#categories">Catégories</a>
-            <a href="{% url 'login' %}" class="login-link">Se connecter</a>
-            <a href="{% url 'signup' %}" class="signup-button">S'inscrire</a>
-        </nav>
-    </header>
+    <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#organisateur">Organiser un événement</a>
+        <a href="{% url 'login' %}" class="login-link">Se connecter</a>
+        <a href="{% url 'signup' %}" class="signup-button">S'inscrire</a>
+    </nav>
+</header>
+
 
     <main>
 
@@ -230,7 +232,7 @@
                     </p>
                 </div>
 
-                <a href="#evenements" class="text-link">
+               <a href="{% url 'events' %}" class="text-link">
                     Explorer <span aria-hidden="true">→</span>
                 </a>
             </div>
@@ -599,30 +601,33 @@
         </section>
 
         <!-- ORGANISATEUR (DÉGRADÉ ORANGÉ DOUX ET CHIC) -->
-        <section class="organizer-section" id="organisateur">
+        
+<!-- ORGANISATEUR -->
+<section class="organizer-section" id="organisateur">
 
-            <div class="organizer-content">
-                <span class="eyebrow">VOUS AVEZ UNE IDÉE ?</span>
+    <div class="organizer-content">
+        <span class="eyebrow">VOUS AVEZ UNE IDÉE ?</span>
 
-                <h2>Rassemblez les gens autour de ce qui vous passionne.</h2>
+        <h2>Rassemblez les gens autour de ce qui vous passionne.</h2>
 
-                <p>
-                    Créez un événement, partagez votre idée et invitez votre
-                    communauté à vous rejoindre.
-                </p>
+        <p>
+            Créez un événement, partagez votre idée et invitez votre
+            communauté à vous rejoindre.
+        </p>
 
-                <a href="{% url 'login' %}" class="organizer-button">
-                    Créer un événement <span aria-hidden="true">→</span>
-                </a>
-            </div>
+        <a href="#organisateur" class="organizer-button">
+            Créer un événement <span aria-hidden="true">→</span>
+        </a>
+    </div>
 
-            <div class="organizer-decoration" aria-hidden="true">
-                <span>✳</span>
-                <span>♡</span>
-                <span>✦</span>
-            </div>
+    <div class="organizer-decoration" aria-hidden="true">
+        <span>✳</span>
+        <span>♡</span>
+        <span>✦</span>
+    </div>
 
-        </section>
+</section>
+
 
     </main>
 
