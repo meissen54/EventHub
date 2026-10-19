@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements — EventHub</title>
+    <link rel="stylesheet" href="{% static 'core/css/events.css' %}">
+</head>
+<body>
+
+    <!-- FOND FLOTTANT GLOBAL (Cohérent avec votre accueil) -->
+    <div class="floating-bg-container" aria-hidden="true">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+        
+        <div class="floating-star star-1">✦</div>
+        <div class="floating-star star-2">✨</div>
+        <div class="floating-star star-3">⭐</div>
+        <div class="floating-star star-4">✦</div>
+        <div class="floating-star star-5">✨</div>
+    </div>
+
+    <!-- CONTENEUR PRINCIPAL DE LA PAGE -->
+    <div class="events-page-wrapper">
+
+        <!-- HEADER / BARRE DE RECHERCHE -->
+        <header class="events-header">
+            <a href="{% url 'home' %}" class="logo">
+                <span class="logo-symbol">e</span>
+                <span>Event<span class="logo-accent">Hub</span></span>
+            </a>
+
+            <div class="search-bar-container">
+                <div class="search-input-group">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Rechercher n'importe quoi">
+                </div>
+                <div class="search-divider"></div>
+                <div class="search-input-group">
+                    <span class="search-icon">📍</span>
+                    <input type="text" value="Tunis, TN">
+                </div>
+                <button class="search-submit-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+
+            <div class="header-auth">
+                <a href="{% url 'login' %}" class="nav-link">Se connecter</a>
+                <a href="{% url 'signup' %}" class="nav-btn-signup">S'inscrire</a>
+            </div>
+        </header>
+
+        <!-- ONGLETS PRINCIPAUX (Événements / Groupes) -->
+        <div class="main-tabs">
+            <button class="tab-btn active">Événements</button>
+
+        </div>
+
+        <!-- TITRE & FILTRES DE RECHERCHE -->
+        <section class="events-hero-section">
+            <h1 class="page-title">Événements diverses sur notre plateforme</h1>
+
+            <!-- BARRE DE FILTRES AVANCÉS -->
+            <div class="filters-bar">
+                <button class="filter-btn reset-filter">Réinitialiser</button>
+                <button class="filter-btn">📅 19 oct. - 21 oct. 2026</button>
+                <button class="filter-btn">👥 Toutes les tailles</button>
+                <button class="filter-btn active-filter">💻 En ligne</button>
+                <button class="filter-btn">📍 Dans un rayon de 30 km</button>
+            </div>
+
+            <!-- NOUVEAU DESIGN DES CATÉGORIES (VERTICAL AVEC ICONES DE L'ACCUEIL) -->
+            <div class="categories-carousel-wrapper">
+                <div class="categories-scroll">
+                    <a href="{% url 'home' %}" class="cat-item active">
+                        <span class="cat-icon">✦</span>
+                        <span class="cat-label">Tous les événements</span>
+                    </a>
+                    <a href="?q=Voyage" class="cat-item">
+                        <span class="cat-icon">🌲</span>
+                        <span class="cat-label">Voyage et plein air</span>
+                    </a>
+                    <a href="?q=Social" class="cat-item">
+                        <span class="cat-icon">🎉</span>
+                        <span class="cat-label">Activités sociales</span>
+                    </a>
+                    <a href="?q=Loisirs" class="cat-item">
+                        <span class="cat-icon">🎨</span>
+                        <span class="cat-label">Loisirs et passions</span>
+                    </a>
+                    <a href="?q=Sport" class="cat-item">
+                        <span class="cat-icon">⚽</span>
+                        <span class="cat-label">Sports et forme</span>
+                    </a>
+                    <a href="?q=Santé" class="cat-item">
+                        <span class="cat-icon">🧠</span>
+                        <span class="cat-label">Santé et bien-être</span>
+                    </a>
+                    <a href="?q=Technologie" class="cat-item">
+                        <span class="cat-icon">💻</span>
+                        <span class="cat-label">Technologie</span>
+                    </a>
+                    <a href="?q=Art" class="cat-item">
+                        <span class="cat-icon">🖌️</span>
+                        <span class="cat-label">Arts et culture</span>
+                    </a>
+                    <a href="?q=Jeux" class="cat-item">
+                        <span class="cat-icon">🎲</span>
+                        <span class="cat-label">Jeux</span>
+                    </a>
+                    <a href="?q=Business" class="cat-item">
+                        <span class="cat-icon">💼</span>
+                        <span class="cat-label">Carrière et affaires</span>
+                    </a>
+                    <a href="?q=Science" class="cat-item">
+                        <span class="cat-icon">🔬</span>
+                        <span class="cat-label">Science et éducation</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRILLE DES CARTES D'ÉVÉNEMENTS -->
+        <section class="events-grid">
+            
+            <!-- Carte 1 -->
+            <div class="event-card">
+                <div class="event-img-container dark-card-bg">
+                    <div class="event-card-inner-text">
+                        <h3>Successful Product Management in the Age of AI - with Roman Pichler</h3>
+                        <span class="badge-online">💻 En ligne</span>
+                    </div>
+                </div>
+                <div class="event-content">
+                    <p class="event-date">19 OCT. 2026 • 17:00 UTC+1</p>
+                    <h4 class="event-name">Successful Product Management in the Age of AI - with Roman Pichler</h4>
+                    <p class="event-group">par Sooner Safer Happier - EMEA (#BVSSH)</p>
+                    <div class="event-footer">
+                        <span class="rating">⭐ 4.7</span>
+                        <span class="participants">👥 315 participants</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 2 -->
+            <div class="event-card">
+                <div class="event-img-container">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80" alt="Atelier">
+                </div>
+                <div class="event-content">
+                    <p class="event-date">19 OCT. 2026 • 18:30 UTC+2</p>
+                    <h4 class="event-name">The Art of Noticing: A Somatic & Creative Collage Workshop</h4>
+                    <p class="event-group">par The Somatic Creative Group</p>
+                    <div class="event-footer">
+                        <span class="participants">👥 92 participants</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 3 -->
+            <div class="event-card">
+                <div class="event-img-container">
+                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80" alt="Feedback">
+                </div>
+                <div class="event-content">
+                    <p class="event-date">19 OCT. 2026 • 18:00 UTC+2</p>
+                    <h4 class="event-name">Christoph's Feedback: Can your business idea make it?</h4>
+                    <p class="event-group">par Christoph's Feedback</p>
+                    <div class="event-footer">
+                        <span class="rating">⭐ 4.7</span>
+                        <span class="participants">👥 351 participants</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 4 -->
+            <div class="event-card">
+                <div class="event-img-container dark-card-bg">
+                    <div class="event-card-inner-text">
+                        <h3>The AI-Built Business That Works While You Don't</h3>
+                        <span class="badge-online">💻 En ligne</span>
+                    </div>
+                </div>
+                <div class="event-content">
+                    <p class="event-date">19 OCT. 2026 • 21:00 UTC+2</p>
+                    <h4 class="event-name">The AI-Built Business That Works While You Don't</h4>
+                    <p class="event-group">par Amsterdam Start Your Online Business T...</p>
+                    <div class="event-footer">
+                        <span class="rating">⭐ 4.2</span>
+                        <span class="participants">👥 17 participants</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+</html>

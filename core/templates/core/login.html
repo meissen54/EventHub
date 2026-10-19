@@ -5,18 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion — EventHub</title>
-    <!-- Lien vers votre fichier CSS indépendant -->
     <link rel="stylesheet" href="{% static 'core/css/login.css' %}">
 </head>
 <body>
 
-    <!-- ÉLÉMENTS FLOTTANTS D'ARRIÈRE-PLAN (Cohérents avec votre site) -->
+    <!-- ÉLÉMENTS FLOTTANTS D'ARRIÈRE-PLAN DE LA PAGE -->
     <div class="floating-bg-container" aria-hidden="true">
         <div class="floating-orb orb-1"></div>
         <div class="floating-orb orb-2"></div>
         <div class="floating-orb orb-3"></div>
         
-        <!-- Étoiles d'arrière-plan -->
         <div class="floating-star star-1">✦</div>
         <div class="floating-star star-2">✨</div>
         <div class="floating-star star-3">⭐</div>
@@ -27,6 +25,9 @@
     <div class="login-wrapper">
         <div class="login-card">
             
+            <!-- CROIX X RETOUR A L'ACCUEIL -->
+            <a href="javascript:history.back()" class="close-btn" title="Retour à la page précédente">✕</a>
+
             <a href="{% url 'home' %}" class="logo">
                 <span class="logo-symbol">e</span>
                 <span>Event<span class="logo-accent">Hub</span></span>
@@ -35,11 +36,10 @@
             <h1>Bon retour parmi nous !</h1>
             <p class="login-subtitle">Connectez-vous pour retrouver vos événements et votre communauté.</p>
 
-            <!-- Formulaire de connexion Django -->
+            <!-- Formulaire de connexion -->
             <form method="post" action="" class="login-form">
                 {% csrf_token %}
 
-                <!-- Si vous utilisez un formulaire Django standard (ex: AuthenticationForm), vous pouvez afficher les champs ici, ou les structurer manuellement -->
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur ou Email</label>
                     <input type="text" id="username" name="username" placeholder="Entrez votre identifiant" required>
@@ -61,7 +61,8 @@
             </form>
 
             <p class="signup-redirect">
-                Vous n'avez pas de compte ? <a href="/accounts/signup/">Inscrivez-vous gratuitement</a>
+                 Vous n'avez pas de compte ?
+                <a href="{% url 'signup' %}">Inscrivez-vous gratuitement</a>
             </p>
 
         </div>

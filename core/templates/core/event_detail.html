@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail de l'événement — EventHub</title>
+    <link rel="stylesheet" href="{% static 'core/css/event_detail.css' %}">
+</head>
+<body>
+
+    <!-- FOND FLOTTANT GLOBAL -->
+    <div class="floating-bg-container" aria-hidden="true">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+        
+        <div class="floating-star star-1">✦</div>
+        <div class="floating-star star-2">✨</div>
+        <div class="floating-star star-3">⭐</div>
+        <div class="floating-star star-4">✦</div>
+        <div class="floating-star star-5">✨</div>
+    </div>
+
+    <div class="detail-page-wrapper">
+
+        <!-- HEADER DE LA PAGE -->
+        <header class="detail-header">
+            <a href="{% url 'home' %}" class="logo">
+                <span class="logo-symbol">e</span>
+                <span>Event<span class="logo-accent">Hub</span></span>
+            </a>
+
+            <div class="header-auth">
+                <a href="{% url 'login' %}" class="nav-link">Se connecter</a>
+                <a href="{% url 'signup' %}" class="nav-btn-signup">S'inscrire</a>
+            </div>
+        </header>
+
+        <!-- EN-TÊTE DE L'ÉVÉNEMENT (TITRE & HÔTE) -->
+        <section class="event-title-section">
+            <a href="{{ back_url|default:'/events/' }}" class="back-link">← Retour aux événements</a>
+            <h1 class="event-main-title">Successful Product Management in the Age of AI - with Roman Pichler</h1>
+            
+            <div class="host-info">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Hôte" class="host-avatar">
+                <div>
+                    <p class="host-label">Organisé par</p>
+                    <p class="host-name">Sooner Safer Happier - EMEA (#BVSSH)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DISPOSITION À DEUX COLONNES (CONTENU + BARRE DE RÉSERVATION) -->
+        <div class="event-detail-layout">
+
+            <!-- COLONNE PRINCIPALE (GAVCHE) -->
+            <main class="main-content">
+
+                <!-- IMAGE PRINCIPALE / BANNIÈRE -->
+                <div class="event-banner-container">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80" alt="Bannière d'événement" class="event-banner-img">
+                    <span class="badge-category">💻 Technologie & IA</span>
+                </div>
+
+                <!-- SECTION À PROPOS DE L'ÉVÉNEMENT -->
+                <section class="content-block">
+                    <h2>Détails de l'événement</h2>
+                    <p class="event-description">
+                        Rejoignez-nous pour une session exclusive sur la gestion de produit à l'ère de l'Intelligence Artificielle avec l'expert renommé Roman Pichler. 
+                        Découvrez comment l'IA transforme la création de produits, l'optimisation des workflows et la prise de décision stratégique dans les équipes modernes.
+                    </p>
+                    <p class="event-description">
+                        Cet événement s'adresse aux Product Managers, Tech Leads, entrepreneurs et passionnés de technologie souhaitant anticiper les évolutions du secteur.
+                    </p>
+                </section>
+
+                <!-- INTERVENANTS / SPEECHERS -->
+                <section class="content-block">
+                    <h2>Intervenants</h2>
+                    <div class="speakers-grid">
+                        <div class="speaker-card">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Roman Pichler">
+                            <div class="speaker-details">
+                                <h3>Roman Pichler</h3>
+                                <p>Product Management Advisor & Auteur</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION EMBACEMENT / EN LIGNE -->
+                <section class="content-block">
+                    <h2>Lieu & Accès</h2>
+                    <div class="location-box">
+                        <span class="location-icon">💻</span>
+                        <div>
+                            <h3>Événement en ligne</h3>
+                            <p>Le lien de la visioconférence (Zoom) sera visible après votre inscription.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- BARRE LATÉRALE DE RÉSERVATION (DROITE) -->
+            <aside class="sidebar">
+                <div class="booking-card">
+                    
+                    <div class="booking-info-item">
+                        <span class="info-icon">📅</span>
+                        <div>
+                            <h4>Lundi 19 octobre 2026</h4>
+                            <p>17:00 à 18:30 UTC+1</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-info-item">
+                        <span class="info-icon">🎟️</span>
+                        <div>
+                            <h4>Événement Gratuit</h4>
+                            <p>Places limitées à 500 participants</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-info-item">
+                        <span class="info-icon">👥</span>
+                        <div>
+                            <h4>315 inscrits</h4>
+                            <p>4.7 ⭐ (120 avis)</p>
+                        </div>
+                    </div>
+
+                    <button class="action-button-primary">S'inscrire à l'événement</button>
+                    <button class="action-button-secondary">🤍 Ajouter aux favoris</button>
+
+                    <div class="share-section">
+                        <p>Partager cet événement :</p>
+                        <div class="share-buttons">
+                            <button class="share-btn">🔗 Copier le lien</button>
+                            <button class="share-btn">💬 Partager</button>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
