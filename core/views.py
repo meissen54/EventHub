@@ -55,3 +55,10 @@ def home(request):
     }
 
     return render(request, "core/home.html", contexte)
+
+# =====================================================
+# PAGE ORGANISATEUR — CRÉATION D'UN ÉVÉNEMENT
+# =====================================================
+
+def create_event(request):
+    return render(request, "core/event_create.html")

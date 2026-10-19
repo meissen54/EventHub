@@ -1,0 +1,497 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Create Event | EventHub</title>
+
+    <link rel="stylesheet" href="{% static 'core/css/event_create.css' %}" />
+  </head>
+
+  <body>
+    <!-- ================= TOP NAVBAR ================= -->
+    <div class="floating-bg-container" aria-hidden="true">
+      <div class="floating-orb orb-1"></div>
+      <div class="floating-orb orb-2"></div>
+      <div class="floating-orb orb-3"></div>
+      <div class="floating-orb orb-4"></div>
+      <div class="floating-orb orb-5"></div>
+
+      <div class="floating-star star-1">✦</div>
+      <div class="floating-star star-2">✨</div>
+      <div class="floating-star star-3">⭐</div>
+      <div class="floating-star star-4">✦</div>
+      <div class="floating-star star-5">✨</div>
+      <div class="floating-star star-6">⭐</div>
+      <div class="floating-star star-7">✦</div>
+      <div class="floating-star star-8">✨</div>
+      <div class="floating-star star-9">⭐</div>
+      <div class="floating-star star-10">✦</div>
+
+      <div class="floating-star star-11">✨</div>
+      <div class="floating-star star-12">⭐</div>
+      <div class="floating-star star-13">✦</div>
+      <div class="floating-star star-14">✨</div>
+      <div class="floating-star star-15">⭐</div>
+      <div class="floating-star star-16">✦</div>
+      <div class="floating-star star-17">✨</div>
+      <div class="floating-star star-18">⭐</div>
+      <div class="floating-star star-19">✦</div>
+      <div class="floating-star star-20">✨</div>
+
+      <div class="floating-star star-21">⭐</div>
+      <div class="floating-star star-22">✦</div>
+      <div class="floating-star star-23">✨</div>
+      <div class="floating-star star-24">⭐</div>
+      <div class="floating-star star-25">✦</div>
+      <div class="floating-star star-26">✨</div>
+      <div class="floating-star star-27">⭐</div>
+      <div class="floating-star star-28">✦</div>
+      <div class="floating-star star-29">✨</div>
+      <div class="floating-star star-30">⭐</div>
+    </div>
+    <header class="top-navbar">
+      <div class="logo">
+        <div class="logo-symbol">
+          <span></span>
+          <span></span>
+        </div>
+
+        <span class="logo-text">eventhub</span>
+      </div>
+
+      <div class="navbar-right">
+        <a href="#" class="updates">Updates</a>
+
+        <button type="button" class="notification-button">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 8A6 6 0 0 0 6 8C6 15 3 15 3 17H21C21 15 18 15 18 8Z" />
+            <path d="M10 21H14" />
+          </svg>
+        </button>
+
+        <div class="account">
+          <div class="avatar">RT</div>
+          <span class="account-name">rahma tabib</span>
+          <span class="account-arrow">⌄</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= APPLICATION ================= -->
+
+    <div class="application">
+      <!-- ================= LEFT NAVIGATION ================= -->
+
+      <aside class="left-navigation">
+        <!-- ICON BAR -->
+
+        <div class="icon-bar">
+          <a href="{% url 'home' %}" class="navigation-icon" title="Home">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 10.5L12 3L21 10.5V21H14V15H10V21H3V10.5Z" />
+            </svg>
+          </a>
+
+          <a href="#" class="navigation-icon selected" title="Events">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="5" width="18" height="16" rx="2" />
+              <path d="M7 3V7" />
+              <path d="M17 3V7" />
+              <path d="M3 10H21" />
+            </svg>
+          </a>
+
+          <a href="#" class="navigation-icon" title="Orders">
+            <svg viewBox="0 0 24 24">
+              <path d="M5 4H19V20H5Z" />
+              <path d="M8 8H16" />
+              <path d="M8 12H16" />
+              <path d="M8 16H13" />
+            </svg>
+          </a>
+
+          <a href="#" class="navigation-icon" title="Marketing">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 11L20 4V20L4 13V11Z" />
+              <path d="M8 14L10 21" />
+            </svg>
+          </a>
+
+          <a href="#" class="navigation-icon" title="Analytics">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 20V10" />
+              <path d="M10 20V4" />
+              <path d="M16 20V8" />
+              <path d="M22 20V2" />
+            </svg>
+          </a>
+
+          <a href="#" class="navigation-icon bottom-icon" title="Settings">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15A1.7 1.7 0 0 0 19.7 16.9L20 18L18 20L16.9 19.7A1.7 1.7 0 0 0 15 20.4L14.5 21.5H9.5L9 20.4A1.7 1.7 0 0 0 7.1 19.7L6 20L4 18L4.3 16.9A1.7 1.7 0 0 0 3.6 15L2.5 14.5V9.5L3.6 9A1.7 1.7 0 0 0 4.3 7.1L4 6L6 4L7.1 4.3A1.7 1.7 0 0 0 9 3.6L9.5 2.5H14.5L15 3.6A1.7 1.7 0 0 0 16.9 4.3L18 4L20 6L19.7 7.1A1.7 1.7 0 0 0 20.4 9L21.5 9.5V14.5L20.4 15Z"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <!-- ================= CREATE EVENT SIDEBAR ================= -->
+
+        <div class="create-sidebar">
+          <div class="back-link">
+            <span class="back-arrow">‹</span>
+            <span>Back to events</span>
+          </div>
+
+          <!-- EVENT CARD -->
+
+          <div class="event-card">
+            <div class="card-decoration"></div>
+
+            <h2 id="sidebar-title">Untitled Event</h2>
+
+            <div class="event-date">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path d="M7 3V7" />
+                <path d="M17 3V7" />
+                <path d="M3 10H21" />
+              </svg>
+
+              <span id="sidebar-date"> Mon, Oct 19, 2026, 2:33 PM </span>
+            </div>
+
+            <button type="button" class="status-button">
+              Draft
+              <span>⌄</span>
+            </button>
+          </div>
+
+          <!-- STEPS -->
+
+          <div class="steps-label">Steps</div>
+
+          <div class="step active">
+            <div class="step-indicator">
+              <div></div>
+            </div>
+
+            <div class="step-information">
+              <h3>Build event page</h3>
+
+              <p>
+                Add all of your event details and let attendees know what to
+                expect
+              </p>
+            </div>
+          </div>
+
+          <div class="step disabled">
+            <div class="step-indicator"></div>
+
+            <div class="step-information">
+              <h3>Add tickets</h3>
+            </div>
+          </div>
+
+          <div class="step disabled">
+            <div class="step-indicator"></div>
+
+            <div class="step-information">
+              <h3>Publish</h3>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================= MAIN ================= -->
+
+      <main class="main">
+        <button type="button" class="preview-button">
+          <svg viewBox="0 0 24 24">
+            <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          Preview
+        </button>
+
+        <form
+          method="POST"
+          enctype="multipart/form-data"
+          class="event-form"
+          id="event-form"
+        >
+          {% csrf_token %}
+
+          <!-- ================= COVER ================= -->
+
+          <section class="cover-container">
+            <img
+              src="{% static 'core/images/groupe.png' %}"
+              class="cover-image"
+              id="cover-image"
+              alt="Event cover"
+            />
+
+            <div class="cover-overlay"></div>
+
+            <label for="cover-upload" class="upload-card">
+              <div class="upload-circle">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 16V4"></path>
+                  <path d="M7 9l5-5 5 5"></path>
+                  <path d="M5 20h14"></path>
+                </svg>
+              </div>
+
+              <span>Upload image</span>
+            </label>
+
+            <input
+              type="file"
+              id="cover-upload"
+              name="cover_image"
+              accept="image/*"
+              hidden
+            />
+
+            <button type="button" class="cover-plus">+</button>
+
+            <div class="cover-slider">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </section>
+
+          <!-- ================= EVENT INFORMATION ================= -->
+
+          <section class="event-information">
+            <div class="event-information-content">
+              <input
+                type="text"
+                name="title"
+                id="event-title"
+                class="event-title"
+                placeholder="Event Title"
+                autocomplete="off"
+              />
+
+              <textarea
+                name="summary"
+                id="event-summary"
+                class="event-summary"
+                placeholder="Add a short description of your event..."
+              ></textarea>
+            </div>
+
+            <button
+              type="button"
+              class="information-plus"
+              aria-label="Add event information"
+            >
+              +
+            </button>
+          </section>
+
+          <!-- ================================================= -->
+          <!-- DATE + LOCATION                                   -->
+          <!-- ================================================= -->
+
+          <section class="details-card date-location-card">
+            <div class="details-column">
+              <h2>Date and time</h2>
+
+              <div class="detail-row">
+                <svg class="detail-icon" viewBox="0 0 24 24">
+                  <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                  <path d="M16 3v4"></path>
+                  <path d="M8 3v4"></path>
+                  <path d="M3 10h18"></path>
+                  <path d="M8 14h3"></path>
+                  <path d="M8 18h3"></path>
+                </svg>
+
+                <div class="detail-content">
+                  <strong>
+                    Saturday, November 28 · 10am -<br />
+                    12pm CET
+                  </strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="details-divider"></div>
+
+            <div class="details-column">
+              <h2>Location</h2>
+
+              <div class="detail-row">
+                <svg class="detail-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"
+                  ></path>
+                  <circle cx="12" cy="9" r="2.5"></circle>
+                </svg>
+
+                <div class="detail-content">
+                  <strong class="location-placeholder">
+                    Enter a location
+                  </strong>
+
+                  <button type="button" class="map-button">
+                    Hide map
+                    <span>⌃</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="section-plus"
+              aria-label="Add date or location"
+            >
+              +
+            </button>
+          </section>
+
+          <!-- ================================================= -->
+          <!-- OVERVIEW                                           -->
+          <!-- ================================================= -->
+
+          <section class="details-card overview-card">
+            <div class="section-header">
+              <h2>Overview</h2>
+
+              <button
+                type="button"
+                class="section-plus"
+                aria-label="Edit overview"
+              >
+                +
+              </button>
+            </div>
+
+            <p>
+              Use this section to provide more details about your event. You can
+              include things to know, venue information, accessibility
+              options—anything that will help people know what to expect.
+            </p>
+          </section>
+
+          <!-- ================================================= -->
+          <!-- GOOD TO KNOW                                       -->
+          <!-- ================================================= -->
+
+          <section class="details-card good-to-know-card">
+            <div class="section-header">
+              <h2>Good to know</h2>
+
+              <button
+                type="button"
+                class="section-plus"
+                aria-label="Edit good to know"
+              >
+                +
+              </button>
+            </div>
+
+            <div class="good-section">
+              <h3>Highlights</h3>
+
+              <div class="highlight-buttons">
+                <button type="button">+ Add Age info</button>
+
+                <button type="button">+ Add Door Time</button>
+
+                <button type="button">+ Add Parking info</button>
+              </div>
+            </div>
+
+            <div class="good-section faq-section">
+              <h3>Frequently asked questions</h3>
+
+              <p class="faq-tip">
+                💡 Events with FAQs have 8% more organic traffic
+              </p>
+
+              <button type="button" class="add-question">+ Add question</button>
+            </div>
+          </section>
+        </form>
+      </main>
+
+      <!-- ===================================================== -->
+      <!-- FIXED SAVE BUTTON                                     -->
+      <!-- ===================================================== -->
+
+      <button
+        type="submit"
+        form="event-form"
+        class="save-button"
+        id="fixed-save-button"
+      >
+        Save and continue
+      </button>
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* IMAGE */
+
+        const upload = document.getElementById("cover-upload");
+        const coverImage = document.getElementById("cover-image");
+
+        if (upload && coverImage) {
+          upload.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (!file) {
+              return;
+            }
+
+            if (!file.type.startsWith("image/")) {
+              alert("Veuillez sélectionner une image.");
+              return;
+            }
+
+            const imageURL = URL.createObjectURL(file);
+
+            coverImage.src = imageURL;
+          });
+        }
+
+        /* TITLE */
+
+        const titleInput = document.getElementById("event-title");
+        const sidebarTitle = document.getElementById("sidebar-title");
+
+        if (titleInput && sidebarTitle) {
+          titleInput.addEventListener("input", function () {
+            const value = this.value.trim();
+
+            sidebarTitle.textContent = value === "" ? "Untitled Event" : value;
+          });
+        }
+
+        /* PLUS */
+
+        const plusButton = document.getElementById("information-plus");
+
+        if (plusButton && titleInput) {
+          plusButton.addEventListener("click", function () {
+            titleInput.focus();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
