@@ -1,0 +1,642 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub — Trouvez votre communauté</title>
+    <meta name="description" content="Découvrez des événements, rejoignez des communautés et partagez vos passions avec EventHub.">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+
+    <!-- ÉLÉMENTS FLOTTANTS D'ARRIÈRE-PLAN -->
+    <div class="floating-bg-container" aria-hidden="true">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+        <div class="floating-orb orb-4"></div>
+        <div class="floating-orb orb-5"></div>
+        
+        <!-- NOMBREUSES ÉTOILES FLOTTANTES PARSEMÉES SUR TOUTE LA PAGE -->
+        <div class="floating-star star-1">✦</div>
+        <div class="floating-star star-2">✨</div>
+        <div class="floating-star star-3">⭐</div>
+        <div class="floating-star star-4">✦</div>
+        <div class="floating-star star-5">✨</div>
+        <div class="floating-star star-6">⭐</div>
+        <div class="floating-star star-7">✦</div>
+        <div class="floating-star star-8">✨</div>
+        <div class="floating-star star-9">⭐</div>
+        <div class="floating-star star-10">✦</div>
+        <div class="floating-star star-11">✨</div>
+        <div class="floating-star star-12">⭐</div>
+        <div class="floating-star star-13">✦</div>
+        <div class="floating-star star-14">✨</div>
+        <div class="floating-star star-15">⭐</div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <a href="{% url 'home' %}" class="logo" aria-label="EventHub, accueil">
+            <span class="logo-symbol">e</span>
+            <span>Event<span class="logo-accent">Hub</span></span>
+        </a>
+
+        <form class="search-bar" action="{% url 'home' %}" method="get">
+            <label class="search-field">
+                <span class="sr-only">Que recherchez-vous ?</span>
+                <span class="search-icon">⌕</span>
+                <input type="search" name="q"
+                       placeholder="Événements, activités, centres d'intérêt..."
+                       value="{{ recherche }}">
+            </label>
+
+            <span class="search-divider"></span>
+
+            <label class="search-field location-field">
+                <span class="search-icon">⌖</span>
+                <span class="sr-only">Ville</span>
+                <input type="text" name="lieu"
+                       placeholder="Ville, ex. Tunis"
+                       value="{{ lieu_recherche }}">
+            </label>
+
+            <button class="search-button" type="submit" aria-label="Rechercher">
+                <span>⌕</span>
+                <span class="search-button-text">Rechercher</span>
+            </button>
+        </form>
+
+        <nav class="nav-links" aria-label="Navigation principale">
+            <a href="#evenements">Explorer</a>
+            <a href="#categories">Catégories</a>
+            <a href="/accounts/login/" class="login-link">Se connecter</a>
+            <a href="/accounts/signup/" class="signup-button">S'inscrire</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO : QUATRE IMAGES AUX FORMES ASYMÉTRIQUES -->
+        <section class="meetup-hero">
+
+            <!-- Image en haut à gauche -->
+            <div class="hero-image image-top-left hero-sticker-image">
+                <img
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=85"
+                    alt="Un groupe d'amis qui partage une activité">
+
+                <span class="hero-image-label label-purple">
+                    <span aria-hidden="true">⌖</span> Près de vous
+                </span>
+
+                <span class="hero-sparkle sparkle-left" aria-hidden="true">✳</span>
+            </div>
+
+            <!-- Image en haut à droite -->
+            <div class="hero-image image-top-right hero-sticker-image">
+                <img
+                    src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=85"
+                    alt="Des personnes réunies lors d'un événement">
+
+                <span class="hero-image-label label-pink">
+                    Club de lecture
+                </span>
+
+                <span class="hero-sparkle sparkle-right" aria-hidden="true">〰</span>
+            </div>
+
+            <!-- Texte central -->
+            <div class="meetup-hero-content">
+
+                <span class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    RENCONTREZ · PARTAGEZ · VIVEZ
+                </span>
+
+                <h1>
+                    La plateforme des
+                    <span class="hero-word">
+                        personnes
+                        <img
+                            class="word-icon people-icon"
+                            src="https://secure.meetupstatic.com/next/images/complex-icons/branded/people-1-2.webp?w=64"
+                            alt="">
+                    </span>
+                    Où les
+                    <span class="hero-word">
+                        centres d'intérêt
+                        <img
+                            class="word-icon ball-icon"
+                            src="https://secure.meetupstatic.com/next/images/complex-icons/branded/ball.webp?w=64"
+                            alt="">
+                    </span>
+                    deviennent des
+                    <span class="hero-word">
+                        amitiés
+                        <img
+                            class="word-icon heart-icon"
+                            src="https://secure.meetupstatic.com/next/images/complex-icons/branded/heart.webp?w=64"
+                            alt="">
+                    </span>
+                </h1>
+
+                <p>
+                    Découvrez des activités près de chez vous, explorez vos passions
+                    et rencontrez des personnes qui aiment les mêmes choses que vous.
+                </p>
+
+                <a href="#evenements" class="hero-discover-button">
+                    Découvrir les événements
+                    <span aria-hidden="true">→</span>
+                </a>
+
+                <div class="hero-trust">
+                    <span class="trust-icon">♡</span>
+                    <span>Des passions communes. De vraies rencontres.</span>
+                </div>
+
+            </div>
+
+            <!-- Image en bas à gauche -->
+            <div class="hero-image image-bottom-left hero-sticker-image">
+                <img
+                    src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=85"
+                    alt="Des amis qui partagent un repas"
+                    loading="lazy">
+
+                <span class="hero-image-label label-pink">
+                    Cours de danse
+                </span>
+
+                <span class="hero-sparkle sparkle-music" aria-hidden="true">♫</span>
+            </div>
+
+            <!-- Image en bas à droite -->
+            <div class="hero-image image-bottom-right hero-sticker-image">
+                <img
+                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=600&q=85"
+                    alt="Des participants à un événement"
+                    loading="lazy">
+
+                <span class="hero-image-label label-yellow">
+                    <span aria-hidden="true">♧</span> Tous les jeudis
+                </span>
+
+                <span class="hero-sparkle sparkle-bottom" aria-hidden="true">〰</span>
+            </div>
+
+            <!-- Décorations -->
+            <span class="hero-decoration hero-decoration-one" aria-hidden="true"></span>
+            <span class="hero-decoration hero-decoration-two" aria-hidden="true"></span>
+
+        </section>
+
+        <!-- =========================
+             ÉVÉNEMENTS
+        ========================== -->
+        <section class="events-section" id="evenements">
+
+            <div class="section-heading events-heading">
+                <div>
+                    <span class="eyebrow">FAITES LE PREMIER PAS</span>
+
+                    <h2>
+                        {% if recherche or lieu_recherche %}
+                            Les événements qui vous correspondent
+                        {% else %}
+                            Des événements à découvrir
+                        {% endif %}
+                    </h2>
+
+                    <p>
+                        Trouvez votre prochaine activité et partagez un bon moment.
+                    </p>
+                </div>
+
+                <a href="#evenements" class="text-link">
+                    Explorer <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+            {% if recherche or lieu_recherche %}
+                <div class="search-summary">
+                    Résultats
+                    {% if recherche %} pour « {{ recherche }} »{% endif %}
+                    {% if lieu_recherche %} à « {{ lieu_recherche }} »{% endif %}
+
+                    <a href="{% url 'home' %}">Effacer les filtres</a>
+                </div>
+            {% endif %}
+
+            {% if evenements %}
+
+                <div class="events-grid">
+
+                    {% for evenement in evenements %}
+
+                        <article class="event-card">
+
+                            <a href="#organisateur" class="event-image">
+                                <img
+                                    src="{{ evenement.image }}"
+                                    alt="{{ evenement.titre }}"
+                                    loading="lazy">
+
+                                <span class="event-category">
+                                    {{ evenement.categorie }}
+                                </span>
+                            </a>
+
+                            <div class="event-body">
+
+                                <p class="event-date">
+                                    <span aria-hidden="true">◷</span>
+                                    {{ evenement.date }}
+                                </p>
+
+                                <h3>
+                                    <a href="#organisateur">
+                                        {{ evenement.titre }}
+                                    </a>
+                                </h3>
+
+                                <p class="event-location">
+                                    <span aria-hidden="true">⌖</span>
+                                    {{ evenement.lieu }}
+                                </p>
+
+                                <div class="event-footer">
+
+                                    <span class="event-price">
+                                        {{ evenement.prix }}
+                                    </span>
+
+                                    <a href="#organisateur" class="event-link">
+                                        Découvrir
+                                        <span aria-hidden="true">→</span>
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="empty-state">
+
+                    <span class="empty-icon">⌕</span>
+
+                    <h3>Aucun événement trouvé</h3>
+
+                    <p>
+                        Essayez un autre mot-clé ou une autre ville pour découvrir
+                        de nouvelles activités.
+                    </p>
+
+                    <a href="{% url 'home' %}" class="primary-button">
+                        Voir tous les événements
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+        <!-- =========================
+             SECTION REJOINDRE EVENTHUB
+        ========================== -->
+        <section class="join-banner-section">
+            <div class="join-banner-badge">
+                <span>💥 RENCONTREZ DE NOUVELLES PERSONNES !</span>
+            </div>
+
+            <div class="join-banner-card">
+                <div class="banner-bg-shape shape-left" aria-hidden="true"></div>
+                <div class="banner-bg-shape shape-right" aria-hidden="true"></div>
+
+                <div class="banner-avatar avatar-1">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Membre 1">
+                </div>
+                <div class="banner-icon icon-teal" aria-hidden="true">
+                    <span>⊕</span>
+                </div>
+
+                <div class="banner-avatar avatar-2">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Membre 2">
+                </div>
+                <div class="banner-icon icon-music" aria-hidden="true">
+                    <span>♫</span>
+                </div>
+                <div class="banner-icon icon-cross" aria-hidden="true">
+                    <span>⊹</span>
+                </div>
+
+                <div class="banner-avatar avatar-3">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Membre 3">
+                </div>
+
+                <div class="join-banner-content">
+                    <h2>Rejoindre EventHub</h2>
+                    <p>
+                        Les gens utilisent EventHub pour rencontrer de nouvelles personnes,
+                        apprendre de nouvelles choses, trouver du soutien, sortir de leur zone de confort
+                        et poursuivre leurs passions, ensemble. L'abonnement est gratuit.
+                    </p>
+                    <a href="/accounts/signup/" class="join-submit-button">
+                        Inscrivez-vous gratuitement
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             CATÉGORIES POPULAIRES
+        ========================== -->
+        <section class="passion-section" id="categories">
+
+            <div class="passion-container">
+
+                <div class="passion-header">
+                    <h2>Découvrir les catégories les plus populaires</h2>
+                </div>
+
+                <div class="passion-carousel" aria-label="Catégories populaires">
+
+                    <a href="{% url 'home' %}?q=Voyage"
+                       class="passion-card passion-green">
+
+                        <span class="passion-card-title">
+                            Voyage et activités de plein air
+                        </span>
+
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">🌲</span>
+
+                    </a>
+
+                    <a href="{% url 'home' %}?q=Social"
+                       class="passion-card passion-orange passion-offset">
+
+                        <span class="passion-card-title">Activités sociales</span>
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">🎉</span>
+
+                    </a>
+
+                    <a href="{% url 'home' %}?q=Loisirs"
+                       class="passion-card passion-blue">
+
+                        <span class="passion-card-title">Loisirs et passions</span>
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">🎨</span>
+
+                    </a>
+
+                    <a href="{% url 'home' %}?q=Sport"
+                       class="passion-card passion-orange passion-offset">
+
+                        <span class="passion-card-title">Sports et remise en forme</span>
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">⚽</span>
+
+                    </a>
+
+                    <a href="{% url 'home' %}?q=Santé"
+                       class="passion-card passion-purple">
+
+                        <span class="passion-card-title">Santé et bien-être</span>
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">🧠</span>
+
+                    </a>
+
+                    <a href="{% url 'home' %}?q=Technologie"
+                       class="passion-card passion-blue passion-offset">
+
+                        <span class="passion-card-title">Technologie</span>
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">💻</span>
+
+                    </a>
+
+                    <a href="{% url 'home' %}?q=Art"
+                       class="passion-card passion-purple">
+
+                        <span class="passion-card-title">Arts et culture</span>
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">🖌️</span>
+
+                    </a>
+
+                    <a href="{% url 'home' %}?q=Jeux"
+                       class="passion-card passion-orange passion-offset">
+
+                        <span class="passion-card-title">Jeux</span>
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">🎲</span>
+
+                    </a>
+
+                    <a href="{% url 'home' %}?q=Business"
+                       class="passion-card passion-green">
+
+                        <span class="passion-card-title">Carrière et affaires</span>
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">💼</span>
+
+                    </a>
+
+                    <a href="{% url 'home' %}?q=Science"
+                       class="passion-card passion-blue passion-offset">
+
+                        <span class="passion-card-title">Science et éducation</span>
+                        <span class="passion-arrow" aria-hidden="true">↗</span>
+                        <span class="passion-illustration" aria-hidden="true">🔬</span>
+
+                    </a>
+
+                </div>
+
+                <div class="passion-footer">
+                    <a href="#evenements" class="passion-button">
+                        Découvrir les événements
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+             FONCTIONNEMENT DE EVENTHUB
+        ========================== -->
+        <section class="how-it-works-section" id="fonctionnement">
+
+            <h2 class="how-it-works-title">Fonctionnement de EventHub</h2>
+
+            <div class="how-it-works-container">
+
+                <svg class="how-arrow arrow-top" viewBox="0 0 300 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M 10,80 C 60,10 120,120 280,30" stroke="#cccccc" stroke-width="2" stroke-dasharray="4 4" fill="none" />
+                    <polyline points="272,25 282,30 278,40" stroke="#cccccc" stroke-width="2" fill="none" />
+                </svg>
+
+                <svg class="how-arrow arrow-bottom" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M 280,10 C 290,120 150,180 20,180" stroke="#cccccc" stroke-width="2" fill="none" />
+                    <polyline points="30,172 18,180 30,188" stroke="#cccccc" stroke-width="2" fill="none" />
+                </svg>
+
+                <div class="how-card step-1">
+                    <div class="how-card-icon icon-search">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <div class="how-card-content">
+                        <h3>Découvrir les événements et les groupes</h3>
+                        <p>Voyez qui organise des événements locaux pour tout ce que vous aimez.</p>
+                        <a href="#evenements" class="how-link">Commencer à explorer</a>
+                    </div>
+                </div>
+
+                <div class="how-card step-2">
+                    <div class="how-card-icon icon-users">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7556d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="how-card-content">
+                        <h3>Trouvez votre communauté</h3>
+                        <p>Connectez-vous autour d'intérêts communs et profitez d'expériences enrichissantes.</p>
+                    </div>
+                </div>
+
+                <div class="how-card step-3">
+                    <div class="how-card-icon icon-megaphone">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e76f51" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18.8 4A2.4 2.4 0 0 1 21 6.6l-1.7 9.9a2.4 2.4 0 0 1-2.4 2H5L1 15V9l4-3.5h11.4A2.4 2.4 0 0 1 18.8 4z"></path>
+                            <path d="M6 15l-1 6"></path>
+                        </svg>
+                    </div>
+                    <div class="how-card-content">
+                        <h3>Créez un groupe pour organiser des événements</h3>
+                        <p>Créez votre propre groupe EventHub et puisez dans une communauté de milliers de personnes.</p>
+                        <a href="/accounts/signup/" class="how-link">Créez un groupe</a>
+                    </div>
+                </div>
+
+                <div class="how-handwritten-tag">
+                    <div class="tag-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f67280" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="tag-text">
+                        <span>DES AMIS, MAIS</span>
+                        <strong>EN TOUTE SIMPLICITÉ</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- COMMUNAUTÉ -->
+        <section class="community-section">
+
+            <div class="community-visual">
+                <img
+                    src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=85"
+                    alt="Des amis réunis autour d'une table"
+                    loading="lazy">
+            </div>
+
+            <div class="community-content">
+                <span class="eyebrow">LES MEILLEURES HISTOIRES SE VIVENT ENSEMBLE</span>
+
+                <h2>Votre communauté vous attend.</h2>
+
+                <p>
+                    Un atelier, une sortie, une rencontre professionnelle ou une
+                    nouvelle passion : commencez par un événement et créez des liens.
+                </p>
+
+                <a href="#categories" class="primary-button">
+                    Trouver mon activité <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+        </section>
+
+        <!-- ORGANISATEUR -->
+        <section class="organizer-section" id="organisateur">
+
+            <div class="organizer-content">
+                <span class="eyebrow">VOUS AVEZ UNE IDÉE ?</span>
+
+                <h2>Rassemblez les gens autour de ce qui vous passionne.</h2>
+
+                <p>
+                    Créez un événement, partagez votre idée et invitez votre
+                    communauté à vous rejoindre.
+                </p>
+
+                <a href="/accounts/login/" class="organizer-button">
+                    Créer un événement <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+            <div class="organizer-decoration" aria-hidden="true">
+                <span>✳</span>
+                <span>♡</span>
+                <span>✦</span>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-top">
+
+            <a href="{% url 'home' %}" class="logo">
+                <span class="logo-symbol">e</span>
+                <span>Event<span class="logo-accent">Hub</span></span>
+            </a>
+
+            <p>Des passions communes, des rencontres inoubliables.</p>
+
+            <nav class="footer-links" aria-label="Liens de pied de page">
+                <a href="#evenements">Événements</a>
+                <a href="#categories">Catégories</a>
+                <a href="#organisateur">Organisateurs</a>
+            </nav>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 EventHub. Tous droits réservés.</span>
+            <span>Fait pour rapprocher les communautés.</span>
+        </div>
+
+    </footer>
+
+</body>
+</html>
