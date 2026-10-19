@@ -87,7 +87,7 @@
             <a href="#evenements">Explorer</a>
             <a href="#categories">Catégories</a>
             <a href="{% url 'login' %}" class="login-link">Se connecter</a>
-            <a href="/accounts/signup/" class="signup-button">S'inscrire</a>
+            <a href="{% url 'signup' %}" class="signup-button">S'inscrire</a>
         </nav>
     </header>
 
@@ -103,7 +103,7 @@
                     alt="Un groupe d'amis qui partage une activité">
 
                 <span class="hero-image-label label-purple">
-                    <span aria-hidden="true">⌖</span> Près de vous
+                    <span aria-hidden="true">⌖</span>Voyage
                 </span>
 
                 <span class="hero-sparkle sparkle-left" aria-hidden="true">✳</span>
@@ -116,7 +116,7 @@
                     alt="Des personnes réunies lors d'un événement">
 
                 <span class="hero-image-label label-pink">
-                    Club de lecture
+                    en plein air
                 </span>
 
                 <span class="hero-sparkle sparkle-right" aria-hidden="true">〰</span>
@@ -182,7 +182,7 @@
                     loading="lazy">
 
                 <span class="hero-image-label label-pink">
-                    Cours de danse
+                    activitées sociales
                 </span>
 
                 <span class="hero-sparkle sparkle-music" aria-hidden="true">♫</span>
@@ -196,7 +196,7 @@
                     loading="lazy">
 
                 <span class="hero-image-label label-yellow">
-                    <span aria-hidden="true">♧</span> Tous les jeudis
+                    <span aria-hidden="true">♧</span> technologie
                 </span>
 
                 <span class="hero-sparkle sparkle-bottom" aria-hidden="true">〰</span>
@@ -366,8 +366,8 @@
                         apprendre de nouvelles choses, trouver du soutien, sortir de leur zone de confort
                         et poursuivre leurs passions, ensemble. L'abonnement est gratuit.
                     </p>
-                    <a href="/accounts/signup/" class="join-submit-button">
-                        Inscrivez-vous gratuitement
+                    <a href="{% url 'signup' %}" class="join-submit-button">
+                    Inscrivez-vous gratuitement
                     </a>
                 </div>
             </div>

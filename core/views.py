@@ -1,7 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import Group
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
-
+# =========================
+# PAGE D'ACCUEIL
+# =========================
 def home(request):
     evenements = [
         {
@@ -56,7 +62,10 @@ def home(request):
 
     return render(request, "core/home.html", contexte)
 
-#login
+
+# =========================
+# CONNEXION
+# =========================
 def login_view(request):
     error = ""
 
@@ -73,7 +82,71 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return redirect("home")
-        else:
-            error = "Nom d'utilisateur ou mot de passe incorrect."
+
+        error = "Nom d'utilisateur ou mot de passe incorrect."
 
     return render(request, "core/login.html", {"error": error})
+
+
+# =========================
+# INSCRIPTION
+# =========================
+def signup_view(request):
+    form = UserCreationForm(request.POST or None)
+
+    email = ""
+    email_error = ""
+    role_error = ""
+    selected_role = ""
+
+    if request.method == "POST":
+        email = request.POST.get("email", "").strip()
+        selected_role = request.POST.get("role", "").strip()
+
+        # Vérifier l'adresse e-mail
+        if not email:
+            email_error = "Veuillez saisir votre adresse e-mail."
+        else:
+            try:
+                validate_email(email)
+            except ValidationError:
+                email_error = "Veuillez saisir une adresse e-mail valide."
+
+        # Vérifier le rôle choisi
+        if selected_role not in ["participant", "organisateur"]:
+            role_error = "Veuillez choisir un type de compte valide."
+
+        # Créer le compte si tous les champs sont valides
+        if form.is_valid() and not email_error and not role_error:
+            user = form.save(commit=False)
+            user.email = email
+            user.save()
+
+            # Créer ou récupérer le groupe correspondant au rôle
+            group_name = (
+                "Participant"
+                if selected_role == "participant"
+                else "Organisateur"
+            )
+
+            group, created = Group.objects.get_or_create(
+                name=group_name
+            )
+
+            # Associer le compte au groupe
+            user.groups.add(group)
+
+            # Connecter automatiquement le nouvel utilisateur
+            login(request, user)
+
+            return redirect("home")
+
+    contexte = {
+        "form": form,
+        "email": email,
+        "email_error": email_error,
+        "role_error": role_error,
+        "selected_role": selected_role,
+    }
+
+    return render(request, "core/signup.html", contexte)
